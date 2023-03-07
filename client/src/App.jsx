@@ -1,9 +1,9 @@
 import { EthProvider } from "./contexts/EthContext";
 import Intro from "./components/Intro/";
 import Setup from "./components/Setup";
-import Demo from "./components/Demo";
+import Bob from "./components/Demo/Bob";
 import Footer from "./components/Footer";
-import GreeterContainer from "./components/Demo/GreeterContainer";
+// import GreeterContainer from "./components/Demo/GreeterContainer";
 import GreeterCustom from "./components/Demo/GreeterCustom";
 
 function App() {
@@ -15,12 +15,12 @@ function App() {
           <hr />
           <Setup />
           <hr />
-          <Demo />
+          <Bob />
           <hr />
-          <GreeterContainer />
-          <hr />
+          {/* <GreeterContainer />
+          <hr />*/}
           <GreeterCustom />
-          <hr />
+          <hr /> 
           <Footer />
         </div>
       </div>

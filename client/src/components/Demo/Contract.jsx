@@ -22,16 +22,16 @@ function Contract({ value, greeter }) {
 
   useEffect(() => {
     (async function () {
-      let oldEvents= await contract.getPastEvents('ValueChanged', {
-        fromBlock: 0,
-        toBlock: 'latest'
-      });
+      // let oldEvents= await contract.getPastEvents('ValueChanged', {
+      //   fromBlock: 0,
+      //   toBlock: 'latest'
+      // });
       let oldies=[];
 
-      oldEvents.forEach(event => {
-          console.log('event', event);
-          oldies.push(event.returnValues.newValue);
-      });
+      // oldEvents.forEach(event => {
+      //     console.log('event', event);
+      //     oldies.push(event.returnValues.newValue);
+      // });
 
       setOldEvents(oldies);
 
@@ -47,35 +47,37 @@ function Contract({ value, greeter }) {
   }, [contract]);
 
   return (
-    <code>
-      {`contract SimpleStorage {
-  uint256 value = `}
+    <>
+      <code>
+        {`contract SimpleStorage {
+    uint256 value = `}
 
-      <span className="secondary-color" ref={spanEle}>
-        <strong>{value}</strong>
-      </span>
+        <span className="secondary-color" ref={spanEle}>
+          <strong>{value}</strong>
+        </span>
 
-      {`;
-  string greeter = `}
+        {`;
+    string greeter = `}
 
-      <span className="secondary-color" ref={greeterElement}>
-        <strong>{greeter}</strong>
-      </span>
+        <span className="secondary-color" ref={greeterElement}>
+          <strong>{greeter}</strong>
+        </span>
 
-      {`;
+        {`;
 
-  function read() public view returns (uint256) {
-    return value;
+    function read() public view returns (uint256) {
+      return value;
+    }
+
+    function write(uint256 newValue) public {
+      value = newValue;
+    }
   }
-
-  function write(uint256 newValue) public {
-    value = newValue;
-  }
-}
-  Events arriving: `} {eventValue} {`
- 
-  Old events: `} {oldEvents}
-    </code>
+    Events arriving: `} {eventValue} {`
+  
+    Old events: `} {oldEvents}
+      </code>
+    </>
   );
 }
 

@@ -8,10 +8,15 @@ import Desc from "./Desc";
 import NoticeNoArtifact from "./NoticeNoArtifact";
 import NoticeWrongNetwork from "./NoticeWrongNetwork";
 
-function Demo() {
+const Bob = () => {
   const { state } = useEth();
+  const { artifact, contract } = state;
   const [value, setValue] = useState("?");
   const [greeter, setGreeter] = useState("?");
+
+  console.log('state', state);
+  console.log('state.artifact ', state.artifact );
+  console.log('state', state);
 
   const demo =
     <>
@@ -26,13 +31,17 @@ function Demo() {
   return (
     <div className="demo">
       <Title />
-      {
+      {/* {
         !state.artifact ? <NoticeNoArtifact /> :
           !state.contract ? <NoticeWrongNetwork /> :
             demo
-      }
+      } */}
+      {/* {!artifact && <NoticeNoArtifact />}
+      {!contract && <NoticeWrongNetwork />} */}
+      {/* {artifact && contract && demo} */}
+      {demo}
     </div>
   );
 }
 
-export default Demo;
+export default Bob;
